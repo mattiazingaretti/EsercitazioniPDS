@@ -1,33 +1,35 @@
 package esercizio1;
 
 public class Triangolo extends Figure{
+	private String description;
 	private double l1;
 	private double l2;
 	private double l3;
-	private double altezza;
 	
 	//Constructor
-	public Triangolo() throws FigureException {
+	public Triangolo( String description, double l1, double l2 , double l3 ){
 		super();
-	}
-	
-	public Triangolo(String description, double l1, double l2 , double l3, double altezza ){
-		super(description);
 		this.setL1(l1);
 		this.setL2(l2);
 		this.setL3(l3);
-		this.setAltezza(altezza);//Suppose related to l1;
+		this.setDescription(description);
 	}
-
+	@Override
+	public String toString() {
+		return "Figure "+this.description+"\n Area: "+this.area()+"\n Perimetro : "+ this.perimetro();
+	}
+	
+	//Erone formula
 	@Override
 	public double area() {
-		return (this.l1*this.altezza)/2;
+		return Math.sqrt((this.perimetro()/2)*(this.perimetro()/2 - this.l1)*(this.perimetro()/2 - this.l2)*(this.perimetro()/2 - this.l3));
 	}
 
 	@Override
 	public double perimetro() {
 		return this.l1+this.l2+this.l3;
 	}
+	
 	//Getters and setters
 	public double getL2() {
 		return l2;
@@ -53,12 +55,11 @@ public class Triangolo extends Figure{
 		this.l3 = l3;
 	}
 
-	public double getAltezza() {
-		return altezza;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setAltezza(double altezza) {
-		this.altezza = altezza;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
 }
