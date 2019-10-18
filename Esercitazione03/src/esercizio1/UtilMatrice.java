@@ -28,6 +28,34 @@ public class UtilMatrice {
 			System.out.print("\n");
 		}
 	}
-}
 
+	public static void stampaArray(double[] a) {
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + "\t");
+		}
+	}
+
+	public static double[] diagonale(double[][] mat) {
+		int min = Math.min(mat.length, mat[0].length);
+		double[] arr = new double[min];
+		for (int i = 0; i < min; i++) {
+			for (int j = 0; j < min; j++) {
+				if (j == i ) {
+					arr[j] = mat[i][j];
+				}
+			}
+		}
+		return arr;
+	}
+
+	public static double sommaArray(double[] a) {
+		double sum = 0;
+		for (int i = 0; i < a.length; i++) {
+			sum += a[i];
+		}
+		return sum;
+	}
+
+
+}
 
