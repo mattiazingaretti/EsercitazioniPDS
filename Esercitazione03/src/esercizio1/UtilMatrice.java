@@ -1,7 +1,4 @@
 package esercizio1;
-
-import java.util.Iterator;
-
 /**
  * Some utilities for matrices
  * 
