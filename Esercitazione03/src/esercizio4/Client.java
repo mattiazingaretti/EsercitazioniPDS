@@ -8,6 +8,7 @@ public class Client {
 		Insegnante ins2 = new Insegnante("Gioele", "Zacchia", 19998, sc);
 		Insegnante ins3 = new Insegnante("Gioele", "Zacchia", 19998, sc);
 		
+		
 		Classe c = new Classe(sc, ins1, ins2, ins3, 3, "VC");
 		c.stampa();
 	}
