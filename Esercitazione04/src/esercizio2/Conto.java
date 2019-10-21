@@ -20,6 +20,7 @@ public class Conto {
 	public void prelievo(int cifra) {
 		this.saldo -= cifra;
 	}
+	
 
 	// Getters and setters
 	public String getCognome() {
