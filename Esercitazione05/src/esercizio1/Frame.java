@@ -7,29 +7,51 @@ import javax.swing.*;
 
 public class Frame extends JFrame {
 	private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-	//Definisco Java Field
+	// Definisco Java Field
 	private JPasswordField pass = new JPasswordField();
 	private JLabel label = new JLabel();
 	private JTextArea text = new JTextArea();
 	private JButton[] buttons = new JButton[12];
-	//Definisco i JPanel
+	// Definisco i JPanel
 	private JPanel sxUP = new JPanel(new BorderLayout());
 	private JPanel sxDown = new JPanel(new GridLayout(4, 3));
 	private JPanel dx = new JPanel(new BorderLayout());
+	public final static String TITLE = "Pannello Digitale";
 
-	public Frame(String s) {
-		super(s);
+	public Frame() {
+		super(Frame.TITLE);
 
 		this.setSize(dim.width / 3, dim.height / 3);
 		this.setLocationRelativeTo(null);// uguale a this.setLocation(dim.width ...);
-		
+
 		setJField();
 		Container contentPane = setContentPane();
 
-		addComponents();
-		
-		setListeners();
+		// Aggiungo i componenti ai JPanel
+		dx.add(BorderLayout.NORTH, label);
+		dx.add(BorderLayout.CENTER, text);
+		sxUP.add(BorderLayout.NORTH, pass);
+		sxUP.add(BorderLayout.CENTER, sxDown);
+		String[] stringData = { "Mostra", "0", "C", "9", "8", "7", "6", "5", "4", "3", "2", "1" };
+		for (int i = 0; i < 12; i++) {
+			buttons[i] = new JButton(stringData[stringData.length - 1 - i]);
+			sxDown.add(buttons[i]);
+		}
 
+		// Setto i listener
+		Logic l = new Logic(pass, label ,text );
+		buttons[11].setActionCommand("show");
+		buttons[11].addActionListener(l);
+		buttons[10].setActionCommand("digit");
+		buttons[10].addActionListener(l);
+		buttons[9].setActionCommand("cancel");
+		buttons[9].addActionListener(l);
+		for (int i = 8; i >= 0; i--) {
+			buttons[i].setActionCommand("digit");
+			buttons[i].addActionListener(l);
+		}
+		
+		
 		// Aggiungo i JPanel al ContentPane
 		contentPane.add(sxUP);
 		contentPane.add(dx);
@@ -38,42 +60,52 @@ public class Frame extends JFrame {
 		this.setVisible(true);
 	}
 
-	private void setListeners() {
-		//Setto i listener
-		buttons[0].setActionCommand("show");
-		buttons[1].setActionCommand("digit");
-		buttons[2].setActionCommand("cancel");
-		for (int i = 3; i < buttons.length; i++) {
-			buttons[i].setActionCommand("digit");
-		}
-	}
-
-	private void addComponents() {
-		// Aggiungo i componenti ai JPanel
-		dx.add(BorderLayout.NORTH, label);
-		dx.add(BorderLayout.CENTER, text);
-		sxUP.add(BorderLayout.NORTH, pass);
-		sxUP.add(BorderLayout.CENTER, sxDown);
-		
-		String[] stringData = {"Mostra", "0", "C", "9", "8", "7", "6", "5","4","3","2","1"}; 
-		for(int i = 0 ; i < 12; i++) {
-			buttons[i] = new JButton(stringData[stringData.length-1-i]);
-			sxDown.add(buttons[i]);
-		}
-	}
 
 	private Container setContentPane() {
-		//Organizzo il contentPane
+		// Organizzo il contentPane
 		Container contentPane = this.getContentPane();
 		contentPane.setLayout(new FlowLayout());
 		return contentPane;
 	}
 
 	private void setJField() {
-		//Setto i JField
+		// Setto i JField
 		text.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		text.setEditable(false);
-		pass.setEditable(false);
 		label.setText("Codice digitato: ");
 	}
+
+	// Getters and setters
+	public JPasswordField getPass() {
+		return pass;
+	}
+
+	public void setPass(JPasswordField pass) {
+		this.pass = pass;
+	}
+
+	public JLabel getLabel() {
+		return label;
+	}
+
+	public void setLabel(JLabel label) {
+		this.label = label;
+	}
+
+	public JTextArea getText() {
+		return text;
+	}
+
+	public void setText(JTextArea text) {
+		this.text = text;
+	}
+
+	public JButton[] getButtons() {
+		return buttons;
+	}
+
+	public void setButtons(JButton[] buttons) {
+		this.buttons = buttons;
+	}
+	
 }
