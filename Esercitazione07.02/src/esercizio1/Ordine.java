@@ -1,13 +1,18 @@
 package esercizio1;
 
-public class Ordine {
+import java.util.*;
 
+public class Ordine {
+	private int numeroProgressivo;
+	private Cliente cliente;
+	private List<Prodotto> listaProdotti = new LinkedList<Prodotto>();
+	
 	public Ordine(int n, Cliente chooseRandomCliente) {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public void inserisciProdotto(Prodotto p, int q) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
