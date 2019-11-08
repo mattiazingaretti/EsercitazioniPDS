@@ -14,6 +14,11 @@ public class InputFrame extends JFrame{
 	//Get device screen size
 	Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 	
+	private JPanel panel = new JPanel(new GridLayout(3,1));
+	
+	private JLabel topLabel = new JLabel("Insert PL Data");
+	
+	
 	public InputFrame(String title) {
 		super(title);
 		
@@ -26,11 +31,11 @@ public class InputFrame extends JFrame{
 
 		
 		Container contentPane = this.getContentPane();
-		contentPane.add(new JPanel());
+		contentPane.add(panel);
 		
-		contentPane.setLayout(new FlowLayout());
-		contentPane.add(new JLabel("Insert Data"));
 		
+		panel.add(topLabel );
+
 		this.setVisible(true);
 	}
 	

@@ -11,7 +11,6 @@ public class Client {
 
 	public static void main(String[] args) {
 		InputFrame frame = new InputFrame("Simplex method");
-			
 		
 	}
 
