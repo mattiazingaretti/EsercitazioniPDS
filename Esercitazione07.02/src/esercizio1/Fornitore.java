@@ -6,9 +6,38 @@ public class Fornitore {
 	private String indirizzo;
 	private String partitaIVA;
 	
-	
-	public Fornitore(String string, String string2, String string3, String string4) {
 
+	public Fornitore(String nome, String cognome, String indirizzo, String partitaIVA) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.indirizzo = indirizzo;
+		this.partitaIVA = partitaIVA;
 	}
+
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getCognome() {
+		return cognome;
+	}
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+	public String getPartitaIVA() {
+		return partitaIVA;
+	}
+	public void setPartitaIVA(String partitaIVA) {
+		this.partitaIVA = partitaIVA;
+	}
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+	
 
 }

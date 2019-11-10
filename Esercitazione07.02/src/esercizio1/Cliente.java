@@ -7,8 +7,51 @@ public class Cliente {
 	private String codiceFiscale;
 	
 	
-	public Cliente(String string, String string2, String string3, String string4) {
-
+	public Cliente(String nome, String cognome, String codiceFiscale, String indirizzo) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.codiceFiscale = codiceFiscale;
+		this.indirizzo = indirizzo;
 	}
+	
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getCognome() {
+		return cognome;
+	}
+
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+
+	public String getIndirizzo() {
+		return indirizzo;
+	}
+
+
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
+	}
+
+
+	public String getCodiceFiscale() {
+		return codiceFiscale;
+	}
+
+
+	public void setCodiceFiscale(String codiceFiscale) {
+		this.codiceFiscale = codiceFiscale;
+	}
+
 
 }
