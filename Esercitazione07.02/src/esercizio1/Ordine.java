@@ -25,7 +25,7 @@ public class Ordine {
 	
 	@Override
 	public String toString() {
-		return "Ordine del cliente: "+this.cliente.getNome()+ "ha ordinato i prodotti : "+this.ordini;
+		return "ha ordinato i prodotti : "+this.ordini;
 	}
 	
 	public HashMap<Prodotto, Integer> getOrdini() {

@@ -26,7 +26,7 @@ public class Operazioni {
 			ListIterator<Prodotto> it = dbProdotti.listIterator(dbProdotti.size());
 			while(it.hasNext()) {
 				Prodotto iesimo = it.next();
-				if(iesimo.equals(p)) {
+				if(iesimo.confronto(p)) {
 					counter++;
 				}
 			}
