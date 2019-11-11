@@ -13,9 +13,30 @@ public class Operazioni {
 		return ris;
 		
 	}
+	
+	//Necessario override del metodo equals in Prodotto.
 
 	public static List<Prodotto> prodottiNonDisponibili(Ordine ord, List<Prodotto> dbProdotti) {
-		return null;
+		HashMap<Prodotto , Integer > map = ord.getOrdini();
+		List<Prodotto> notAvailable = new LinkedList<Prodotto>();
+
+		for(Prodotto p: map.keySet()) {
+			//Controllo la molteplicità nel db
+			int counter = 0;
+			ListIterator<Prodotto> it = dbProdotti.listIterator(dbProdotti.size());
+			while(it.hasNext()) {
+				Prodotto iesimo = it.next();
+				if(iesimo.equals(p)) {
+					counter++;
+				}
+			}
+			//Confronto la molteplicità disponibile con quella richiesta
+			if(counter < map.get(p)) {
+				//Se non è disponibile lo appendo
+				notAvailable.add(p);
+			}
+		}
+		return notAvailable;
 	}
 
 }

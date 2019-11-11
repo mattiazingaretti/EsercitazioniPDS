@@ -15,6 +15,22 @@ public class Prodotto {
 		this.prezzoVendita = prezzoVendita;
 		this.numero = numero;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		//Uguaglianza superficiale
+		if(o!= null && getClass().equals(o.getClass())) {
+			Prodotto p = (Prodotto) o;
+			//Tests uguaglianza profonda
+			return p.codice == this.codice && p.descrizione == this.descrizione && p.fornitore ==this.fornitore && this.prezzoVendita == p.prezzoVendita && this.numero == p.numero;
+		}
+		else return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "Prodotto: "+this.descrizione+" "+ "fornito da: "+this.fornitore.getNome()+" "+"al prezzo di : "+this.prezzoVendita;
+	}
 
 
 	public String getCodice() {
@@ -65,5 +81,4 @@ public class Prodotto {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-
 }

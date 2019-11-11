@@ -14,6 +14,11 @@ public class Cliente {
 		this.indirizzo = indirizzo;
 	}
 	
+	@Override
+	public String toString() {
+		return "Cliente "+ this.cognome+ " " + this.cognome+" residente a : "+ this.indirizzo;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

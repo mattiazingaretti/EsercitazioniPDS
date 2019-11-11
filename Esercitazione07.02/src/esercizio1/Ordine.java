@@ -22,8 +22,11 @@ public class Ordine {
 			this.ordini.put( p , this.ordini.get(p) + q);
 		}
 	}
-
-
+	
+	@Override
+	public String toString() {
+		return "Ordine del cliente: "+this.cliente.getNome()+ "ha ordinato i prodotti : "+this.ordini;
+	}
 	
 	public HashMap<Prodotto, Integer> getOrdini() {
 		return ordini;

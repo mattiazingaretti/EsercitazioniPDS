@@ -13,6 +13,10 @@ public class Fornitore {
 		this.indirizzo = indirizzo;
 		this.partitaIVA = partitaIVA;
 	}
+	
+	public String toString() {
+		return "Fornitore: "+this.nome+ " "+ this.cognome+ " residente a : "+this.indirizzo+ " Partita IVA: "+this.partitaIVA;
+	}
 
 	public String getNome() {
 		return nome;
