@@ -18,9 +18,9 @@ public class MyFrame extends JFrame{
 	private JLabel porta = new JLabel("Porta");
 
 	//TextFields
-	private JTextField txtMatricola = new JTextField();
-	private JTextField txtIP = new JTextField();
-	private JTextField txtPorta = new JTextField();
+	private JTextField txtMatricola = new JTextField(10);
+	private JTextField txtIP = new JTextField(10);
+	private JTextField txtPorta = new JTextField(10);
 	
 	//Panel container
 	private FlowLayout flow = new FlowLayout();
@@ -49,6 +49,23 @@ public class MyFrame extends JFrame{
 		topPanelRight.add(porta);
 		topPanelRight.add(txtPorta);
 		
+		//Set dei listener
+		//TODO Remove hardcoded values
+		ListenerLogic listener = new ListenerLogic(this);
+		connect.setActionCommand("CONNECT");
+		connect.addActionListener(listener);
+		
+		disconnect.setActionCommand("DISCONNECT");
+		disconnect.addActionListener(listener);
+		disconnect.setEnabled(false);//dal testo
+		
+		start.setActionCommand("START");
+		start.addActionListener(listener);
+		start.setEnabled(false);//dal testo
+		
+		stop.setActionCommand("STOP");
+		stop.addActionListener(listener);
+		stop.setEnabled(false);//Dal testo
 		
 		bottomPanel.add(connect);
 		bottomPanel.add(disconnect);
@@ -67,6 +84,35 @@ public class MyFrame extends JFrame{
 		this.pack();
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
+	}
+
+	
+	public JTextField getTxtMatricola() {
+		return txtMatricola;
+	}
+
+	public JTextField getTxtIP() {
+		return txtIP;
+	}
+
+	public JTextField getTxtPorta() {
+		return txtPorta;
+	}
+	
+	public JButton getConnect() {
+		return connect;
+	}
+
+	public JButton getDisconnect() {
+		return disconnect;
+	}
+
+	public JButton getStart() {
+		return start;
+	}
+
+	public JButton getStop() {
+		return stop;
 	}
 
 }
