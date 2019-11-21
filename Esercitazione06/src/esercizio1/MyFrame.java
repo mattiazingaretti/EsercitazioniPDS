@@ -10,7 +10,6 @@ public class MyFrame extends JFrame{
 	private JButton connect = new JButton("Connect");
 	private JButton disconnect = new JButton("Disconnect");
 	private JButton start = new JButton("Start");
-	private JButton stop = new JButton("Stop");
 	
 	//Label
 	private JLabel matricola = new JLabel("Matricola");
@@ -53,14 +52,15 @@ public class MyFrame extends JFrame{
 		bottomPanel.add(connect);
 		bottomPanel.add(disconnect);
 		bottomPanel.add(start);
-		bottomPanel.add(stop);
 		bottomPanel.setSize(100,150);
 		
 		contentPane.add(topPanelLeft, BorderLayout.BEFORE_LINE_BEGINS);
 		contentPane.add(topPanelRight,BorderLayout.CENTER);
 		contentPane.add(bottomPanel, BorderLayout.SOUTH);
 		
-		
+		connect.setActionCommand("CONNECT");
+		disconnect.setActionCommand("DISCONNECT");
+		start.setActionCommand("START");
 		
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
