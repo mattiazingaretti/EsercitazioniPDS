@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-11-22T00:48:15</date>
+  <millis>1574380095413</millis>
+  <sequence>0</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>esercizio1.server.Server</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Server Initialized Correctly</message>
+</record>
+<record>
+  <date>2019-11-22T00:48:18</date>
+  <millis>1574380098785</millis>
+  <sequence>1</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>esercizio1.server.Server</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Socket connected!</message>
+</record>
+<record>
+  <date>2019-11-22T00:48:27</date>
+  <millis>1574380107743</millis>
+  <sequence>2</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>esercizio1.server.Server</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Entrato</message>
+</record>
+<record>
+  <date>2019-11-22T00:48:27</date>
+  <millis>1574380107746</millis>
+  <sequence>3</sequence>
+  <logger>logger</logger>
+  <level>INFO</level>
+  <class>esercizio1.server.Server</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Received command : connect</message>
+</record>
+</log>
