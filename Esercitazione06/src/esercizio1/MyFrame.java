@@ -62,10 +62,6 @@ public class MyFrame extends JFrame{
 		start.addActionListener(listener);
 		start.setEnabled(false);//dal testo
 		
-		stop.setActionCommand("STOP");
-		stop.addActionListener(listener);
-		stop.setEnabled(false);//Dal testo
-		
 		bottomPanel.add(connect);
 		bottomPanel.add(disconnect);
 		bottomPanel.add(start);
@@ -111,8 +107,5 @@ public class MyFrame extends JFrame{
 		return start;
 	}
 
-	public JButton getStop() {
-		return stop;
-	}
 
 }
