@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		//MyFrame frame = new MyFrame("");
+		MyFrame frame = new MyFrame("");
 		//Connetto al server
 		Socket socket;
 		try {
