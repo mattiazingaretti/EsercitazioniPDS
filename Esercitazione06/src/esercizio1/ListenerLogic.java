@@ -1,7 +1,13 @@
 package esercizio1;
 
+<<<<<<< HEAD
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+=======
+
+
+public class ListenerLogic {
+>>>>>>> 8c2d7e1941eb2fc8a547cf3fa0050b485ca734bc
 
 public class ListenerLogic implements ActionListener{
 	private String porta;
