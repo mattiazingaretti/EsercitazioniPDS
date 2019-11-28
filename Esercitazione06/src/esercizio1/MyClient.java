@@ -1,51 +1,38 @@
 package esercizio1;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class MyClient implements Runnable{
 	private Socket socket;
 	private String command;
-	private boolean inAscolto;
+	
 	
 	public MyClient(Socket socket, String command) {
-		this.setSocket(socket);
 		this.command = command;
-		this.inAscolto = false;
+		this.socket = socket ;//Can't be null
 	}
 	@Override
 	public void run() {
-		switch (this.command) {
-		case "SUCCESS":
-			this.inAscolto = true;//Importante l'assenza di break in questo caso...
-		case "CONNECT":
-			
-			break;
-		case "STOP":
-			break;
-		case "DISCONNECT":
-			break;
-		case "START":
-			break;
+		try {
+			PrintWriter out = new PrintWriter(socket.getOutputStream());
+			out.println("connect");
+			out.flush();
+			out.close();
+			Scanner sc = new Scanner(socket.getInputStream());
+			String line1 ="";
+			while(sc.hasNextLine()) {
+				line1 += sc.nextLine();
+			}
+			System.out.println(line1);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
-	public Socket getSocket() {
-		return socket;
-	}
-	public void setSocket(Socket socket) {
-		this.socket = socket;
-	}
-	public String getCommand() {
-		return command;
-	}
-	public void setCommand(String command) {
-		this.command = command;
-	}
-	public boolean isInAscolto() {
-		return inAscolto;
-	}
-	public void setInAscolto(boolean inAscolto) {
-		this.inAscolto = inAscolto;
-	}
-	
+		
 }

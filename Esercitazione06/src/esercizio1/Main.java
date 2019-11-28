@@ -10,16 +10,19 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		MyFrame frame = new MyFrame("");
+		MyFrame frame = new MyFrame(""); //Initialize the UI
 		//Connetto al server
+		
+		//Connect to server
+		//Receive the data 
+		
+		/*
 		Socket socket;
 		try {
 			socket = new Socket("192.168.50.82", 9999);
-			System.out.println("conneso");
 			PrintWriter out = new PrintWriter(socket.getOutputStream());
-			out.println("start");//Sempre con \n
+			out.println("connect");//Sempre con \n
 			out.flush();
-			System.out.println("ho mandato start");
 			Scanner sc = new Scanner(socket.getInputStream());
 			String line = "";
 			int i = 0;
@@ -48,7 +51,7 @@ public class Main {
 		} catch (IOException e) {
 			System.out.print("Failed to connect server");
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 }
