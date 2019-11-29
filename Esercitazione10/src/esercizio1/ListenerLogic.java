@@ -13,10 +13,14 @@ public class ListenerLogic implements ActionListener{
 	private String ip;
 	private String porta;
 	private String matricola;
-	private Thread clientThread;
-	private ClientHandler clientProcess;
-	private ClientHandler startProcess;
+	
+	private ConnectProcess connectProcess;
+	private Thread connectThread;
+	private StartStopProcess io;
+	private Thread stopThread;
 	private Thread startThread;
+	private DisconnectProcess disconnectProcess;
+	private Thread disconnectThread;
 	
 	public ListenerLogic(Gui gui) {
 		this.gui = gui;
@@ -50,52 +54,45 @@ public class ListenerLogic implements ActionListener{
 
 	private void disconnect(String cmd) {
 		
+		disconnectProcess = new DisconnectProcess(connectProcess.getClientSocket(), gui);
+		disconnectThread = new Thread(disconnectProcess);
+		disconnectThread.start();
 	}
 
 	private void stop(String cmd) {
-		JButton disconnect = gui.getDisconnectButton();
-		disconnect.setEnabled(true);
-		JButton stop = gui.getStopButton();
-		stop.setEnabled(false);
 		
-		
-		ClientHandler stopProcess = new ClientHandler(gui, cmd);
-		stopProcess.setClientSocket(clientProcess.getClientSocket());
-
-		Thread stopThread = new Thread(stopProcess);
+		io.setState(cmd);
+		stopThread = new Thread(io);
 		stopThread.start();
+
 	}
 
-	private void start(String cmd) {
-		JButton startBtn = gui.getStartButton();
-		startBtn.setEnabled(false);
-		JButton stop = gui.getStopButton();
-		stop.setEnabled(true);
-		JButton disconnect = gui.getDisconnectButton();
-		disconnect.setEnabled(false);
+	private void start(String cmd){
 		
-		startProcess = new ClientHandler(gui, cmd);
-		startProcess.setClientSocket(this.clientProcess.getClientSocket());
-		startThread = new Thread(startProcess);
+		gui.setCurrentStatus("STARTING");
+		Main.mainLog.info(gui.getCurrentStatus());
+		
+		io = new StartStopProcess(connectProcess.getClientSocket(), cmd, gui);
+		startThread = new Thread(io);
 		startThread.start();
+		gui.setCurrentStatus("STARTED");
+		Main.mainLog.info(gui.getCurrentStatus());
+		
+		gui.updateUIStatus();
 	}
 
 	private void connect(String cmd) {
-		this.updateValues();
-		
-		JButton connect = this.gui.getConnectButton();
-		connect.setEnabled(false);
-		JButton disconnect = gui.getDisconnectButton();
-		disconnect.setEnabled(true);
-		JButton stop = this.gui.getStopButton();
-		stop.setEnabled(false);
-		
 		this.gui.setCurrentStatus("CONNECTION");
 		Main.mainLog.info(this.gui.getCurrentStatus());
 		
-		clientProcess = new ClientHandler(gui, cmd);
-		clientThread = new Thread(clientProcess);
-		clientThread.start();
+		this.updateValues();
+		this.gui.updateUIStatus();
+		
+		
+		connectProcess = new ConnectProcess(gui);
+		connectThread = new Thread(connectProcess);
+		
+		connectThread.start();
 		
 	}
 

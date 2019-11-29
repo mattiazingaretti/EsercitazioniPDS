@@ -10,8 +10,9 @@ import javax.swing.*;
 
 public class Gui {
 	private JFrame frame;
-	private static String[] status = { "CONNECTION", "CONNECTED", "DOWNLOADING", "DOWNLOADED", "STOPPING", "STOPPED",
-			"DISCONNECTION", "DISCONNECTED" };
+	private static String[] status = { "CONNECTION", "CONNECTED", "DOWNLOADING"
+			, "DOWNLOADED", "STARTING", "STARTED",
+			"STOPPING", "STOPPED","DISCONNECTION", "DISCONNECTED" };
 	private String currentStatus = "INITIALIZED";// Starting value of the GUI
 	private JPanel mainPanel;
 	private JPanel contentPane;
@@ -67,9 +68,9 @@ public class Gui {
 
 	private void setFrame() {
 		// Setting frame
+		this.updateUIStatus();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 	}
 
@@ -148,14 +149,53 @@ public class Gui {
 	}
 	
 	//Set currentState only if s matches one of the options in the status Array
-	public void setCurrentStatus(String s) {
+	public synchronized void setCurrentStatus(String s) {
 		for (int i = 0; i < status.length; i++) {
 			if(s.equals(status[i])) {
 				this.currentStatus = s;
 				break;
 			}
 		}
+	}
+	
+	public void updateUIStatus() {
 		
+		switch (this.currentStatus) {
+		case "INITIALIZED":
+			this.connectButton.setEnabled(true);
+			this.startButton.setEnabled(false);
+			this.stopButton.setEnabled(false);
+			this.disconnectButton.setEnabled(false);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			break;
+		case "CONNECTION":
+			this.connectButton.setEnabled(false);
+			this.startButton.setEnabled(true);
+			this.stopButton.setEnabled(false);
+			this.disconnectButton.setEnabled(true);
+			break;
+		case "STARTED":
+			this.connectButton.setEnabled(false);
+			this.startButton.setEnabled(false);
+			this.stopButton.setEnabled(true);
+			this.disconnectButton.setEnabled(false);
+			break;
+			
+		case "STOPPED":
+			this.connectButton.setEnabled(true);
+			this.startButton.setEnabled(false);
+			this.stopButton.setEnabled(false);
+			this.disconnectButton.setEnabled(true);
+			break;
+		case "DISCONNECTED":
+			this.connectButton.setEnabled(true);
+			this.startButton.setEnabled(false);
+			this.stopButton.setEnabled(false);
+			this.disconnectButton.setEnabled(false);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			break;
+			
+		}
 	}
 	
 	public String getCurrentStatus() {
