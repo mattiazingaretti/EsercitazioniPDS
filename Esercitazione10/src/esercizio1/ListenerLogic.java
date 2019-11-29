@@ -58,10 +58,10 @@ public class ListenerLogic implements ActionListener{
 		JButton stop = gui.getStopButton();
 		stop.setEnabled(false);
 		
+		
 		ClientHandler stopProcess = new ClientHandler(gui, cmd);
-		stopProcess.setClientSocket(startProcess.getClientSocket());
-		stopProcess.setOut(startProcess.getOut());
-		stopProcess.setInput(startProcess.getInput());
+		stopProcess.setClientSocket(clientProcess.getClientSocket());
+
 		Thread stopThread = new Thread(stopProcess);
 		stopThread.start();
 	}
