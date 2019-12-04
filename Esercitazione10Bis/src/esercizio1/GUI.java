@@ -170,8 +170,8 @@ public class GUI {
 		}
 	}
 
-	public void changeColor(int parseInt, int parseInt2) {
-		
+	public void changeColor(int c, int i) {
+		panels[i].getPanel().setBackground(new Color(c));
 	}
 	
 	
