@@ -60,11 +60,7 @@ public class ListenerLogic implements ActionListener{
 	}
 
 	private void stop(String cmd) {
-		
 		io.setState(cmd);
-		stopThread = new Thread(io);
-		stopThread.start();
-
 	}
 
 	private void start(String cmd){
@@ -77,7 +73,7 @@ public class ListenerLogic implements ActionListener{
 		startThread.start();
 		gui.setCurrentStatus("STARTED");
 		Main.mainLog.info(gui.getCurrentStatus());
-		
+
 		gui.updateUIStatus();
 	}
 

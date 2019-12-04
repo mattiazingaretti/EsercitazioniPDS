@@ -6,9 +6,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class StartStopProcess implements Runnable {
-
 	
-
 	private Gui gui;
 	
 	private String state;
