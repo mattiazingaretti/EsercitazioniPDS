@@ -1,4 +1,4 @@
-package esercizio1;
+package esercizio1.view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -6,6 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.*;
+
+import esercizio1.model.Model;
+import esercizio1.model.Panel;
+
 
 public class GUI {
 	private static final int GRID_DIMENSION = 256;
@@ -26,21 +30,27 @@ public class GUI {
 	private JTextField ipText;
 	private JTextField portText;
 	
-	private Panel[] panels;
+	private JPanel[] jPanels;
+	private Model m;
 	private JPanel contentPane;
 	
 	private JPanel top;
 	private JPanel middle;
 	private JPanel bottom;
 	
-	public GUI(String title) {
+	public GUI(String title, Model m) {
 		//Inizializzo il frame
 		frame = new JFrame(title);
+		this.m = m;
 		
 		//Initialization of JPanels
 		top = new JPanel();
 		middle = new JPanel(new GridLayout(16, 16));
 		bottom = new JPanel();
+		jPanels = new JPanel[GRID_DIMENSION];
+		for (int i = 0; i < jPanels.length; i++) {
+			jPanels[i] = new JPanel();
+		}
 		
 		//Get content Pane
 		contentPane = (JPanel) frame.getContentPane();
@@ -59,10 +69,6 @@ public class GUI {
 		clear = new JButton("clear");
 		connect = new JButton("connect");
 		
-		panels = new Panel[GRID_DIMENSION];
-		for(int i = 0; i < GRID_DIMENSION; i++) {
-			panels[i] = new Panel(new JPanel(), Color.LIGHT_GRAY, i);
-		}
 		
 		//Init listener
 		ListenerLogic listener = new ListenerLogic(this);
@@ -117,8 +123,8 @@ public class GUI {
 		top.add(stop);
 		
 		//Filling grids
-		for (int i = 0; i < panels.length; i++) {
-			middle.add(panels[i].getPanel());
+		for (int i = 0; i < jPanels.length; i++) {
+			middle.add(jPanels[i]);
 		}
 		
 		bottom.add(connect);
@@ -145,6 +151,7 @@ public class GUI {
 			break;
 		case "disconnect":
 			disconnect.setEnabled(false);
+			start.setEnabled(false);
 			connect.setEnabled(true);
 			clear.setEnabled(false);
 			this.setCurrentStatus("disconnect");
@@ -165,13 +172,16 @@ public class GUI {
 			clear.setEnabled(true);
 			start.setEnabled(false);
 			break;
-		default:
+		case "clear":
+			for (int i = 0; i < jPanels.length; i++) {
+				jPanels[i].setBackground(Color.LIGHT_GRAY);
+			}
 			break;
 		}
 	}
 
-	public void changeColor(int c, int i) {
-		panels[i].getPanel().setBackground(new Color(c));
+	public void changeColor(Panel p) {
+		jPanels[p.getIndex()].setBackground(p.getColor());
 	}
 	
 	
@@ -228,10 +238,6 @@ public class GUI {
 		return portText;
 	}
 
-	public Panel[] getPanels() {
-		return panels;
-	}
-
 	public JPanel getTop() {
 		return top;
 	}
@@ -242,6 +248,10 @@ public class GUI {
 
 	public JPanel getBottom() {
 		return bottom;
+	}
+
+	public Model getModel() {
+		return this.m;
 	}
 
 	
