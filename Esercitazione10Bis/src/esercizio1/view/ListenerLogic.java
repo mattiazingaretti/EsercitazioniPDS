@@ -15,6 +15,7 @@ public class ListenerLogic implements ActionListener {
 		gui = g;
 		c = new Controller(g, g.getModel());
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
