@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+import esercizio1.controller.ListenerLogic;
 import esercizio1.model.Model;
 import esercizio1.model.Panel;
 

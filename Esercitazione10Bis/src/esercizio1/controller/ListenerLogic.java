@@ -1,9 +1,9 @@
-package esercizio1.view;
+package esercizio1.controller;
 
 import java.awt.event.*;
 
 import esercizio1.model.Process;
-import esercizio1.controller.Controller;
+import esercizio1.view.GUI;
 
 public class ListenerLogic implements ActionListener {
 	private GUI gui;
